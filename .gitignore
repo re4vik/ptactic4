@@ -1,52 +1,24 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+int main() {
+    int n;
+    printf("Введіть натуральне число n (1 < n < 150): ");
+    scanf("%d", &n);  // Введення натурального числа n
+    
+     // Перевірка чи задовольняє число n обмеженням
+    if (n <= 1 || n >= 150) {
+        printf("Невірне число\n");
+        return 0;
+    }
 
-# Linker output
-*.ilk
-*.map
-*.exp
+    int count = 0;  // Оголошення змінних
 
-# Precompiled Headers
-*.gch
-*.pch
+    for (int i = 1; i <= n; i++) {  // Цикл перебору чисел від 1 до n
+        if (n % i == n / i) {  // Перевірка умови, чи число i є рівним дільником n
+            count++;  // Якщо умова виконується, збільшуємо лічильник на 1
+        }
+    }
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+    printf("Кількість рівних дільників числа %d: %d\n", n, count);  // Виведення результату
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+}
